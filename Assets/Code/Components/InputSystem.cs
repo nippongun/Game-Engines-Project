@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class InputSystem : MonoBehaviour
 {
-    private void Start()
-    {
-        StartCoroutine(CloseDisclaimer());
-    }
-
     private void Update()
     {
-        if (Input.anyKey)
+        if (Input.GetKey(KeyCode.Space))
         {
-            Game.m_gameStateMachine.SetTrigger("Cinematic");
+            Game.OnAcceptAction();
         }
-    }
-
-    private IEnumerator CloseDisclaimer()
-    {
-        yield return new WaitForSeconds(3);
-        Game.m_gameStateMachine.SetTrigger("Cinematic");
-    }
+    }   
 }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class BeginGameState : StateMachineBehaviour
 {
-    private string[] m_level = { "Disclaimer", "Cinematic" };
+    private string[] m_level = { "Disclaimer", "Cinematic", "Menu" };
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         for (int i = 0; i < m_level.Length; ++i)

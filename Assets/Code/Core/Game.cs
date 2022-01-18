@@ -5,7 +5,10 @@ public static class Game
 {
     public static Animator m_gameStateMachine;
 
-    public static GameObject FindController(Scene s)
+    public delegate void OnAcceptHandler();
+    public static event OnAcceptHandler OnAccept;
+
+    public static Controller FindController(Scene s)
     {
         GameObject[] objs = s.GetRootGameObjects();
         for (int i=0; i < objs.Length; ++i)
@@ -14,7 +17,7 @@ public static class Game
             Controller c = go.GetComponent<Controller>();
             if(c != null)
             {
-                return go;
+                return c;
             }
         }
         return null;
@@ -24,8 +27,8 @@ public static class Game
     {
         if (s.isLoaded)
         {
-            GameObject go = FindController(s);
-            if (go != null)
+            Controller c = FindController(s);
+            if (c != null)
             {
                 return true;
             }
@@ -35,5 +38,10 @@ public static class Game
             }
         }
         return false;
+    }
+
+    public static void OnAcceptAction()
+    {
+        OnAccept?.Invoke();
     }
 }
