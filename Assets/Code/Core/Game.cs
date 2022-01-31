@@ -8,6 +8,18 @@ public static class Game
     public delegate void OnAcceptHandler();
     public static event OnAcceptHandler OnAccept;
 
+    public delegate void OnUpHandler();
+    public static event OnUpHandler OnUp;
+
+    public delegate void OnUpReleaseHandler();
+    public static event OnUpReleaseHandler OnUpRelease;
+
+    public delegate void OnDownHandler();
+    public static event OnDownHandler OnDown;
+
+    public delegate void OnDownReleaseHandler();
+    public static event OnDownReleaseHandler OnDownRelease;
+
     public static Controller FindController(Scene s)
     {
         GameObject[] objs = s.GetRootGameObjects();
@@ -43,5 +55,25 @@ public static class Game
     public static void OnAcceptAction()
     {
         OnAccept?.Invoke();
+    }
+
+    public static void OnDownAction()
+    {
+        OnDown?.Invoke();
+    }
+
+    public static void OnDownReleaseAction()
+    {
+        OnDownRelease?.Invoke();
+    }
+
+    public static void OnUpAction()
+    {
+        OnUp?.Invoke();
+    }
+
+    public static void OnUpReleaseAction()
+    {
+        OnUpRelease?.Invoke();
     }
 }
