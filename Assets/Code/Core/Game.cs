@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public static class Game
 {
     public static Animator m_gameStateMachine;
-
+    public static Boy m_boy;
     public delegate void OnAcceptHandler();
     public static event OnAcceptHandler OnAccept;
 
@@ -20,14 +20,20 @@ public static class Game
     public delegate void OnDownReleaseHandler();
     public static event OnDownReleaseHandler OnDownRelease;
 
+    public delegate void OnLeftHandler();
+    public static event OnLeftHandler OnLeft;
+
+    public delegate void OnRightHandler();
+    public static event OnRightHandler OnRight;
+
     public static Controller FindController(Scene s)
     {
         GameObject[] objs = s.GetRootGameObjects();
-        for (int i=0; i < objs.Length; ++i)
+        for (int i = 0; i < objs.Length; ++i)
         {
             GameObject go = objs[i];
             Controller c = go.GetComponent<Controller>();
-            if(c != null)
+            if (c != null)
             {
                 return c;
             }
@@ -75,5 +81,15 @@ public static class Game
     public static void OnUpReleaseAction()
     {
         OnUpRelease?.Invoke();
+    }
+
+    public static void OnLeftAction()
+    {
+        OnLeft?.Invoke();
+    }
+
+    public static void OnRightAction()
+    {
+        OnRight?.Invoke();
     }
 }

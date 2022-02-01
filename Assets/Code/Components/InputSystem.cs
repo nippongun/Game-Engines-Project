@@ -30,5 +30,15 @@ public class InputSystem : MonoBehaviour
         {
             Game.OnDownReleaseAction();
         }
-    }   
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            Game.OnLeftAction();
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            Game.OnLeftAction();
+        }
+    }
 }

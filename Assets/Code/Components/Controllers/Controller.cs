@@ -20,12 +20,12 @@ public class Controller : MonoBehaviour
 
     }
 
-    public void HideScene()
+    public virtual void HideScene()
     {
         m_visualObject.SetActive(false);
     }
 
-    public void ShowScene()
+    public virtual void ShowScene()
     {
         m_visualObject.SetActive(true);
     }

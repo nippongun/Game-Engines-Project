@@ -27,7 +27,5 @@ public class MenuState : StateMachineBehaviour
     {
         m_controller.StopScene();
         m_controller.HideScene();
-        m_levelController.StopScene();
-        m_levelController.HideScene();
     }
 }
