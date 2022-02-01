@@ -4,12 +4,11 @@ public class Boy : Character
 {
     [SerializeField]
     private Apple m_apple = null;
-    [SerializeField]
     public float m_delay = 3f;
 
     public override void InitCharacter()
     {
-        base.InitCharacter();
+        HideApple();
     }
 
     public void HideApple()

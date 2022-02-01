@@ -1,14 +1,13 @@
-
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
     [HideInInspector]
-    public Animator animator = null;
+    public Animator m_animator = null;
 
     public virtual void Start()
     {
-        animator = this.GetComponent<Animator>();
+        m_animator = this.GetComponent<Animator>();
     }
 
     public virtual void InitCharacter()

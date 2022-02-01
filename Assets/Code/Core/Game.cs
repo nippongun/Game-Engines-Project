@@ -5,6 +5,7 @@ public static class Game
 {
     public static Animator m_gameStateMachine;
     public static Boy m_boy;
+
     public delegate void OnAcceptHandler();
     public static event OnAcceptHandler OnAccept;
 
@@ -29,11 +30,11 @@ public static class Game
     public static Controller FindController(Scene s)
     {
         GameObject[] objs = s.GetRootGameObjects();
-        for (int i = 0; i < objs.Length; ++i)
+        for (int i=0; i < objs.Length; ++i)
         {
             GameObject go = objs[i];
             Controller c = go.GetComponent<Controller>();
-            if (c != null)
+            if(c != null)
             {
                 return c;
             }

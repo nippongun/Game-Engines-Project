@@ -20,7 +20,6 @@ public class MenuState : StateMachineBehaviour
         m_controller.ShowScene();
         m_controller.StartScene();
         m_levelController.ShowScene();
-        m_levelController.StartScene();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -36,9 +36,9 @@ public class InputSystem : MonoBehaviour
             Game.OnLeftAction();
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.D))
         {
-            Game.OnLeftAction();
+            Game.OnRightAction();
         }
-    }
+    }   
 }

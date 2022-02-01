@@ -1,11 +1,13 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+
 public class LevelController : Controller
 {
     [SerializeField]
     private Boy m_boy = null;
     [SerializeField]
     private Girl m_girl = null;
+
     public override void Start()
     {
         base.Start();
@@ -20,6 +22,7 @@ public class LevelController : Controller
     public override void StartScene()
     {
         m_boy.InitCharacter();
+        m_girl.InitCharacter();
 
         Game.m_boy = m_boy;
 
@@ -28,12 +31,12 @@ public class LevelController : Controller
 
     public override void StopScene()
     {
-        base.StopScene();
+        m_girl.ClearCharacter();
     }
 
     private IEnumerator ThrowApple()
     {
         yield return new WaitForSeconds(m_boy.m_delay);
-        Game.m_boy.animator.SetTrigger("PickupTrigger");
+        Game.m_boy.m_animator.SetTrigger("PickupApple");
     }
 }

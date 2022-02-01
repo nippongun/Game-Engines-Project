@@ -1,11 +1,10 @@
-
 using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
     [SerializeField]
     private Transform m_appleJoint;
-    private bool m_follow = false;
+    public bool m_follow = false;
 
     private void Update()
     {
@@ -25,12 +24,13 @@ public class Apple : MonoBehaviour
         m_follow = false;
     }
 
-    public void ShowApple()
-    {
-        this.gameObject.SetActive(true);
-    }
     public void HideApple()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void ShowApple()
+    {
+        this.gameObject.SetActive(true);
     }
 }
