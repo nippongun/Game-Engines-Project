@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Boy : Character
 {
-    [SerializeField]
-    private Apple m_apple = null;
+    public Apple m_apple = null;
     public float m_delay = 3f;
+    public Vector2 m_throwForce = new Vector2(3f, 10f);
 
     public override void InitCharacter()
     {
@@ -13,6 +13,7 @@ public class Boy : Character
 
     public void HideApple()
     {
+        m_apple.transform.position = Vector3.zero;
         m_apple.HideApple();
     }
 
@@ -26,8 +27,13 @@ public class Boy : Character
         m_apple.AttachApple();
     }
 
-    public void DetachApple()
+    public void DetachApple(float f)
     {
-        m_apple.DetachApple();
+        m_apple.DetachApple(f);
+    }
+
+    public void Throw()
+    {
+        DetachApple(Random.Range(m_throwForce[0], m_throwForce[1]));
     }
 }

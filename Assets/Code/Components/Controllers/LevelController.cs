@@ -7,6 +7,7 @@ public class LevelController : Controller
     private Boy m_boy = null;
     [SerializeField]
     private Girl m_girl = null;
+    private float m_delay = 0.0f;
 
     public override void Start()
     {
@@ -25,6 +26,7 @@ public class LevelController : Controller
         m_girl.InitCharacter();
 
         Game.m_boy = m_boy;
+        Game.m_girl = m_girl;
 
         StartCoroutine(ThrowApple());
     }
@@ -36,7 +38,9 @@ public class LevelController : Controller
 
     private IEnumerator ThrowApple()
     {
-        yield return new WaitForSeconds(m_boy.m_delay);
+        m_delay = Random.Range(0f, 5f) + m_boy.m_delay;
+        yield return new WaitForSeconds(m_delay);
         Game.m_boy.m_animator.SetTrigger("PickupApple");
+        StartCoroutine(ThrowApple());
     }
 }

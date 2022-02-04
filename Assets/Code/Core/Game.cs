@@ -5,6 +5,7 @@ public static class Game
 {
     public static Animator m_gameStateMachine;
     public static Boy m_boy;
+    public static Girl m_girl;
 
     public delegate void OnAcceptHandler();
     public static event OnAcceptHandler OnAccept;
