@@ -8,6 +8,8 @@ public class LevelController : Controller
     [SerializeField]
     private Girl m_girl = null;
     private float m_delay = 0.0f;
+    [SerializeField]
+    private ParticleSystem m_splashEffectPS = null;
 
     public override void Start()
     {
@@ -28,7 +30,16 @@ public class LevelController : Controller
         Game.m_boy = m_boy;
         Game.m_girl = m_girl;
 
+        Game.OnAppleMissed += Game_OnAppleMissed;
+
         StartCoroutine(ThrowApple());
+    }
+
+    private void Game_OnAppleMissed()
+    {
+        m_splashEffectPS.transform.position = Game.m_boy.m_apple.transform.position;
+        m_splashEffectPS.Stop();
+        m_splashEffectPS.Play();
     }
 
     public override void StopScene()

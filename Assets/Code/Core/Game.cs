@@ -6,6 +6,8 @@ public static class Game
     public static Animator m_gameStateMachine;
     public static Boy m_boy;
     public static Girl m_girl;
+    private static int m_catchedApples = 0;
+    private static int m_missedApples = 0;
 
     public delegate void OnAcceptHandler();
     public static event OnAcceptHandler OnAccept;
@@ -27,6 +29,12 @@ public static class Game
 
     public delegate void OnRightHandler();
     public static event OnRightHandler OnRight;
+
+    public delegate void OnAppleCatchedHandler();
+    public static event OnAppleCatchedHandler OnAppleCatched;
+
+    public delegate void OnAppleMissedHandler();
+    public static event OnAppleMissedHandler OnAppleMissed;
 
     public static Controller FindController(Scene s)
     {
@@ -93,5 +101,39 @@ public static class Game
     public static void OnRightAction()
     {
         OnRight?.Invoke();
+    }
+
+    public static void AddMissedApple()
+    {
+        m_missedApples++;
+        OnAppleMissed?.Invoke();
+    }
+
+    public static void AddCatchedApple()
+    {
+        m_catchedApples++;
+        OnAppleCatched?.Invoke();
+    }
+
+    public static void ResetCounters()
+    {
+        m_catchedApples = 0;
+        m_missedApples = 0;
+    }
+
+    public static int CatchedApples
+    {
+        get
+        {
+            return m_catchedApples;
+        }
+    }
+
+    public static int MissedApples
+    {
+        get
+        {
+            return m_missedApples;
+        }
     }
 }

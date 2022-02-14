@@ -1286,6 +1286,7 @@ GameObject:
   - component: {fileID: 4668161241307453844}
   - component: {fileID: 1596683568566584302}
   - component: {fileID: 6298548844791733461}
+  - component: {fileID: 3384889755314354484}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Untagged
@@ -1320,7 +1321,7 @@ Animator:
   m_GameObject: {fileID: 5441319523117482798}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 16cc3464dabb84742a8404ab1ec444ac, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 760e5cd930795764b8154755ae3bca4e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1341,6 +1342,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2ab5d0bf5071647ac10529ddfea020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_animator: {fileID: 0}
+  m_driver: {fileID: 0}
+  m_force: 10
+  m_maxVelocity: 2
+--- !u!135 &3384889755314354484
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441319523117482798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.83, z: 0}
 --- !u!1 &5464493217881044503
 GameObject:
   m_ObjectHideFlags: 0

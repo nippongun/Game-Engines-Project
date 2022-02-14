@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class Girl : Character
 {
+    [SerializeField]
+    private PhysicalDriver m_driver = null;
+    [SerializeField]
+    private float m_force = 10f;
+    [SerializeField]
+    private float m_maxVelocity = 2f;
     private bool m_catchMode = false;
-    public float m_catchRadius = 1f;
 
     public override void InitCharacter()
     {
@@ -28,29 +33,42 @@ public class Girl : Character
     {
         if (m_catchMode)
         {
-            Vector3 p = Game.m_boy.m_apple.transform.position;
-            float d = Vector3.Distance(
-                this.transform.position,
-                p);
-            if (d < m_catchRadius)
-            {
-                Game.m_boy.HideApple();
-                Debug.Log("GOT APPLE!");
-            }
+            m_animator.SetFloat("Velocity", m_driver.m_rb.velocity.magnitude);
         }
+    }
+
+    private void Update()
+    {
+        transform.position = m_driver.m_groundPoint;
     }
 
     private void Game_OnRight()
     {
-        Vector3 p = this.transform.position;
-        p.x -= 0.05f;
-        this.transform.position = p;
+        AddForce(Vector3.left * m_force);
     }
 
     private void Game_OnLeft()
     {
-        Vector3 p = this.transform.position;
-        p.x += 0.05f;
-        this.transform.position = p;
+        AddForce(Vector3.right * m_force);
+    }
+
+    private void AddForce(Vector3 f)
+    {
+        if (m_driver.m_rb.velocity.magnitude < m_maxVelocity)
+        {
+            m_driver.m_rb.AddForce(f);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (m_catchMode)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Apple"))
+            {
+                Game.m_boy.HideApple();
+                Game.AddCatchedApple();
+            }
+        }
     }
 }
